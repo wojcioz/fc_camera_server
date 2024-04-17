@@ -2,7 +2,7 @@ from picamera2 import MappedArray, Picamera2, Preview
 from libcamera import controls
 from picamera2.encoders import H264Encoder, Quality
 
-from utils import generate_filename, convert_videos
+from fc_camera_server.utils import generate_filename, convert_videos
 
 class CameraHandler:
     def __init__(self):
