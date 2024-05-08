@@ -31,8 +31,9 @@ def generate_frames():
 
 @app.route("/video_feed")
 def video_feed():
+    global cam_handler
     return Response(
-        generate_frames(), mimetype="multipart/x-mixed-replace; boundary=frame"
+        cam_handler.get_frames(), mimetype="multipart/x-mixed-replace; boundary=frame"
     )
 
 @app.route("/start_capture")
@@ -45,7 +46,6 @@ def start_capture():
 @app.route("/stop_capture")
 def stop_capture():
     global cam_handler
-    cam_handler.stop()
     cam_handler.stop_recording()
     return "Capture stopped"
 

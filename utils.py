@@ -73,7 +73,8 @@ class RingBuffer:
         def get(self):
             """ return list of elements in correct order """
             return self.data[self.cur:]+self.data[:self.cur]
-
+        def get_oldest(self):
+            return self.data[(self.cur+1)% self.max]
     def append(self,x):
         """append an element at the end of the buffer"""
         self.data.append(x)
@@ -85,3 +86,5 @@ class RingBuffer:
     def get(self):
         """ Return a list of elements from the oldest to the newest. """
         return self.data
+    def get_oldest(self):
+        return self.data[self.cur+1]
